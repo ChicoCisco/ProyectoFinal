@@ -11,7 +11,7 @@ class registro_entradasController extends Controller
 {
     public function ChecarExistencia()
     {
-        $response = Http::get('https://io.adafruit.com/api/v2/CarlosLpz/feeds/codigosnfc/data?limit=1&X-AIO-Key=aio_OSaX270JDoA6efw0vhef8a9RxoLt');
+        $response = Http::get('https://io.adafruit.com/api/v2/CarlosLpz/feeds/codigosnfc/data?limit=1&X-AIO-Key=aio_qhQi79wEQsIQnJSY9jIqnnj6Nyl8');
         $posts=json_decode($response->body());
 
         $postuser1 = array();
