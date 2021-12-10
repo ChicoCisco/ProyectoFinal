@@ -48,6 +48,54 @@ class registro_entradasController extends Controller
         /*echo json_encode($postuser1);*/
         //return $respuesta;
     }
+
+    public function ChecarManual(Request $request)
+    {
+        //$response = Http::get('https://io.adafruit.com/api/v2/CarlosLpz/feeds/codigosnfc/data?limit=1&X-AIO-Key=aio_niyI86YjyLiULi30kdQKOOKtjSWo');
+        //$posts=json_decode($response->body());
+
+        //$postuser1 = array();
+        
+        
+
+        //foreach($posts as $post)
+        //{
+        //    $t=$post->value;
+            //$llave = User::find($t);
+
+            //if($post->value==$llave)
+            //{
+            //    $respuesta="1";
+            //}
+
+            if (User::where('LlaveIngreso', $request->LlaveIngreso)->exists()) {
+
+                //$respuesta='1';
+
+                $response = Http::withHeaders([
+                    'X-AIO-Key' => 'aio_niyI86YjyLiULi30kdQKOOKtjSWo'
+                ])->post('https://io.adafruit.com//api/v2/CarlosLpz/feeds/nfcactivado/data', [
+                    'value' => "1",
+                ]);
+
+                $responde= "Usuario Verificado Exitosamente";
+            }
+
+            else
+            {
+                $responde = "Usuario NO puede Ingresar, Saludos";
+            }
+
+            //else
+            //{
+            //    $respuesta='-';
+            //}
+        //}
+
+        /*echo json_encode($postuser1);*/
+        return $response;
+    }
+
     public function ConsultarEntradas()
     {
         $insertar = new registro_entradas();
@@ -78,5 +126,12 @@ class registro_entradasController extends Controller
         return $postuser1;
         //return $postuser2;
         
+    }
+
+    public function ConsultarUsuarios()
+    {
+        $users=User::table('users')->get();
+
+        return view('user.index', ['name' => $users]);
     }
 }
