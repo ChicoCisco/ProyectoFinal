@@ -11,7 +11,7 @@ class registro_entradasController extends Controller
 {
     public function ChecarExistencia()
     {
-        $response = Http::get('https://io.adafruit.com/api/v2/CarlosLpz/feeds/codigosnfc/data?limit=1&X-AIO-Key=aio_PFes49JOOLYVHZ3U1rEkOPQzXJtX');
+        $response = Http::get('https://io.adafruit.com/api/v2/CarlosLpz/feeds/codigosnfc/data?limit=1&X-AIO-Key=aio_lnzD89Bw7GG9AD5V87eukvJyJ2Wr');
         $posts=json_decode($response->body());
 
         $postuser1 = array();
@@ -33,7 +33,7 @@ class registro_entradasController extends Controller
                 $respuesta='1';
 
                 $response = Http::withHeaders([
-                    'X-AIO-Key' => 'aio_PFes49JOOLYVHZ3U1rEkOPQzXJtX'
+                    'X-AIO-Key' => 'aio_lnzD89Bw7GG9AD5V87eukvJyJ2Wr'
                 ])->post('https://io.adafruit.com//api/v2/CarlosLpz/feeds/nfcactivado/data', [
                     'value' => "1",
                 ]);
@@ -52,7 +52,7 @@ class registro_entradasController extends Controller
     {
         $insertar = new registro_entradas();
 
-        $response = Http::get('https://io.adafruit.com/api/v2/CarlosLpz/feeds/codigosnfc/data?limit=10&X-AIO-Key=aio_PFes49JOOLYVHZ3U1rEkOPQzXJtX');
+        $response = Http::get('https://io.adafruit.com/api/v2/CarlosLpz/feeds/codigosnfc/data?limit=10&X-AIO-Key=aio_lnzD89Bw7GG9AD5V87eukvJyJ2Wr');
         $posts=json_decode($response->body());
 
         $postuser1 = array();
